@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
-        IDbExecutor ItestDBExecutor = new MySqlDbExecutor();
+         IDbExecutor IDbExecutor = new MySqlDbExecutor();
         try {
-            ResultSet resultset = ItestDBExecutor.execute("insert users (name, age, email) value ('Karl', 68, 'Karl@mail.ru')");
+            ResultSet resultset = IDbExecutor.execute("insert users (name, age, email) value ('Karl', 68, 'Karl@mail.ru')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

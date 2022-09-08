@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class PropirtiesReaders implements IResource{
+public class PropirtiesReader implements IResource{
     @Override
     public Map<String, String> read() {
-        String rootFolder = System.getProperty("user.dir");
+        String rootFolder = System.getProperty("C:/Users/evgen/IdeaProjects/MySqlTest");
 
         Map<String, String> props = new HashMap<>();
 
-        try (InputStream input = new FileInputStream(String.format("%s/src/resources/%s", rootFolder, "db.properties"))) {
+        try (InputStream input = new FileInputStream(String.format("C:/Users/evgen/IdeaProjects/MySqlTest/src/resources", rootFolder, "db.properties"))) {
             Properties prop = new Properties();
             prop.load(input);
 

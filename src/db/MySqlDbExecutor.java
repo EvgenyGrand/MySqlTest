@@ -1,7 +1,7 @@
 package db;
 
 import utils.resources.IResource;
-import utils.resources.PropirtiesReaders;
+import utils.resources.PropirtiesReader;
 
 import java.sql.*;
 import java.util.Map;
@@ -11,7 +11,7 @@ import java.util.Map;
 
         @Override
         public ResultSet execute(String sqlRequest) throws SQLException {
-            IResource resource = new PropirtiesReaders();
+            IResource resource = new PropirtiesReader();
 
             Map<String, String> props = resource.read();
 
