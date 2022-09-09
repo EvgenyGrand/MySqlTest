@@ -10,7 +10,7 @@ import java.util.Map;
     public class MySqlDbExecutor implements IDbExecutor {
 
         @Override
-        public ResultSet execute(String sqlRequest) throws SQLException {
+        public void execute(String sqlRequest) throws SQLException {
             IResource resource = new PropirtiesReader();
 
             Map<String, String> props = resource.read();
@@ -21,12 +21,12 @@ import java.util.Map;
             Statement statement = null;
 
             try {
-                connection = DriverManager.getConnection ((props.get(url)), (props.get("user")), (props.get("password")));
+                connection = DriverManager.getConnection(url, props.get("user"), props.get("password"));
                 statement = connection.createStatement();
 
-                ResultSet resultSet = statement.executeQuery(sqlRequest);
+                statement.execute(sqlRequest);
 
-                return resultSet;
+//                return resultSet;
 
             } finally {
                 if (statement != null) {
@@ -36,5 +36,5 @@ import java.util.Map;
                     connection.close();
                 }
             }
-}
+        }
 }

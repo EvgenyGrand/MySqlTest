@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
          IDbExecutor IDbExecutor = new MySqlDbExecutor();
         try {
-            ResultSet resultset = IDbExecutor.execute("insert users (name, age, email) value ('Karl', 68, 'Karl@mail.ru')");
+             IDbExecutor.execute("insert users (id, name) value ('1', 'Karl')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
