@@ -4,37 +4,52 @@ import utils.resources.IResource;
 import utils.resources.PropirtiesReader;
 
 import java.sql.*;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
-    public class MySqlDbExecutor implements IDbExecutor {
+public class MySqlDbExecutor implements IDbExecutor {
 
-        @Override
-        public void execute(String sqlRequest) throws SQLException {
-            IResource resource = new PropirtiesReader();
+    private static Connection connection = null;
+    private static Statement statement = null;
 
-            Map<String, String> props = resource.read();
 
-            String url = String.format("%s/%s", props.get("url"), props.get("db_name"));
+    @Override
+    public ResultSet execute(String sqlRequest, boolean isResult) throws SQLException {
+        IResource resource = new PropirtiesReader();
 
-            Connection connection = null;
-            Statement statement = null;
+        Map<Integer, String> result = new HashMap<>();
 
-            try {
+        Map<String, String> props = resource.read();
+
+        String url = String.format("%s/%s", props.get("url"), props.get("db_name"));
+
+            if (connection == null) {
+
                 connection = DriverManager.getConnection(url, props.get("user"), props.get("password"));
                 statement = connection.createStatement();
-
-                statement.execute(sqlRequest);
-
-//                return resultSet;
-
-            } finally {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
             }
+            statement.execute(sqlRequest);
+
+            if (isResult) {
+                return statement.executeQuery(sqlRequest);
+            }
+            statement.execute(sqlRequest);
+            return null;
+
         }
-}
+
+        @Override
+        public void close () throws SQLException {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+
+        }
+    }
+
