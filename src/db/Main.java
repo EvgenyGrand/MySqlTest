@@ -22,9 +22,10 @@ public class Main {
             }
 //            if (isTableCreated) {
 //                IDbExecutor.execute("drop table users", false);
-           //}
+//           }
 
-                users.insert();
+               users.update();
+               users.select();
 
 
             } finally{

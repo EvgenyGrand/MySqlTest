@@ -36,7 +36,7 @@ public class MySqlDbExecutor implements IDbExecutor {
             if (isResult) {
                 return statement.executeQuery(sqlRequest);
             }
-            statement.execute(sqlRequest);
+
             return null;
 
         }
