@@ -24,7 +24,6 @@ public class Main {
 //                IDbExecutor.execute("drop table users", false);
 //           }
 
-               users.update();
                users.select();
 
 

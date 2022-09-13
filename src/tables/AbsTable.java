@@ -8,12 +8,12 @@ import java.sql.SQLException;
 
 public abstract class AbsTable implements ITable{
 
-    public String tableName;
-    public String requestCreate;
-    public String requestInsert;
-    public String requestUpdate;
-    public String requestDelete;
-    public String requestSelect;
+    protected String tableName;
+    protected String requestCreate;
+    protected String requestInsert;
+    protected String requestUpdate;
+    protected String requestDelete;
+    protected String requestSelect;
 
 
     protected db.IDbExecutor IDbExecutor;
