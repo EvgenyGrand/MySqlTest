@@ -14,6 +14,7 @@ public abstract class AbsTable implements ITable{
     protected String requestUpdate;
     protected String requestDelete;
     protected String requestSelect;
+    protected String requestPointFive;
 
 
     protected db.IDbExecutor IDbExecutor;
@@ -31,6 +32,7 @@ public abstract class AbsTable implements ITable{
     this.requestUpdate = requestUpdate;
     this.requestDelete = requestDelete;
     this.requestSelect = requestSelect;
+    this.requestPointFive = requestPointFive;
 
     IDbExecutor = new MySqlDbExecutor();
     }
@@ -59,8 +61,15 @@ public abstract class AbsTable implements ITable{
     public void select() throws SQLException{
         ResultSet resultSet= IDbExecutor.execute(requestSelect,true);
         while (resultSet.next()){
-            System.out.println(resultSet.getString(1));
-            System.out.println(resultSet.getString(2));
+            System.out.println(resultSet.getInt("id"));
+            System.out.println(resultSet.getString("fio"));
+            System.out.println(resultSet.getString("sex"));
+            System.out.println(resultSet.getString("group.name"));
+            System.out.println(resultSet.getString("curator.fio"));
+
+           
+
         }
+
     }
 }
