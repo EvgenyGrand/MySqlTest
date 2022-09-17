@@ -7,7 +7,10 @@ public interface ITable {
     void delete() throws SQLException;
     void insert() throws SQLException;
     void update() throws SQLException;
-    void select() throws SQLException;
+    void selectAllStudents() throws SQLException;
+    void selectMan() throws SQLException;
+
+
 
 
 }
