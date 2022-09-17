@@ -9,6 +9,7 @@ public interface ITable {
     void update() throws SQLException;
     void selectAllStudents() throws SQLException;
     void selectMan() throws SQLException;
+    void selectWomen() throws SQLException;
 
 
 

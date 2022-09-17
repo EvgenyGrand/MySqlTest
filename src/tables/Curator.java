@@ -7,9 +7,10 @@ public class Curator extends AbsTable{
     public static   String requestDelete = "drop table %s";
     public static String requestSelect = "select * from Group";
     public static String requestCountMan;
+    public static String requestWomen;
 
     public Curator (){
-        super("mydmtest.curator", requestCreate,requestInsert,requestUpdate,requestDelete,requestSelect,requestCountMan);
+        super("mydmtest.curator", requestCreate,requestInsert,requestUpdate,requestDelete,requestSelect,requestCountMan, requestWomen);
     }
     public String toString() {
         return super.toString();

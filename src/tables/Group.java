@@ -7,10 +7,11 @@ public class Group extends AbsTable{
     public static String requestDelete = "drop table %s";
     public static   String requestSelect = "select * from Group";
     public static String requestCountMan;
+    public static String requestWomen;
 
 
     public Group(){
-        super("mydmtest.group", requestCreate,requestInsert,requestUpdate,requestDelete,requestSelect,requestCountMan);
+        super("mydmtest.group", requestCreate,requestInsert,requestUpdate,requestDelete,requestSelect,requestCountMan, requestWomen);
     }
     @Override
     public String toString() {
