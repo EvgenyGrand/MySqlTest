@@ -18,7 +18,6 @@ public class Main {
         AbsTable Curator = new Curator();
 
 
-
         try {
             ResultSet tables = IDbExecutor.execute("show tables", true);
             boolean isTableCreated = false;
@@ -31,11 +30,11 @@ public class Main {
 //            if (isTableCreated) {
 //                IDbExecutor.execute("drop table users", false);
 //           }
-              Group.selectGroupCurator();
+            Student.selectStudentGroup();
 
 
-            } finally{
-                Student.getIDbExecutor().close();
-            }
+        } finally {
+            Student.getIDbExecutor().close();
         }
     }
+}

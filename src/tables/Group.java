@@ -1,7 +1,11 @@
 package tables;
 
 public class Group extends AbsTable{
+
+    //задание № 1 вызвать метод Group.create()
     public static String requestCreate = "create table %s (id int, name varchar(50), id_curator int)";
+
+    //задание № 2 Вызвать метод Group.insert(), последовательно добавить 15 различных записей
     public static   String requestInsert = "insert %s (id, name, id_curator) value ('3','lawyers','3')";
 
     //задание № 8 Вызвать метод Group.update()
@@ -19,9 +23,10 @@ public class Group extends AbsTable{
             "group by mydmtest.group.id \n" +
             "order by mydmtest.group.id";
 
+    public static String recuestStudentGroup;
 
     public Group(){
-        super("mydmtest.group", requestCreate,requestInsert,requestUpdate,requestDelete,requestSelect,requestCountMan, requestWomen, requestCurator);
+        super("mydmtest.group", requestCreate,requestInsert,requestUpdate,requestDelete,requestSelect,requestCountMan, requestWomen, requestCurator,recuestStudentGroup);
     }
     @Override
     public String toString() {
