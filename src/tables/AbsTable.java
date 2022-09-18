@@ -16,6 +16,7 @@ public abstract class AbsTable implements ITable {
     protected String requestSelect;
     protected String requestCountMan;
     protected String requestWomen;
+    protected String requestCurator;
 
 
     protected db.IDbExecutor IDbExecutor;
@@ -25,7 +26,7 @@ public abstract class AbsTable implements ITable {
         return IDbExecutor;
     }
 
-    public AbsTable(String tableName, String requestCreate, String requestInsert, String requestUpdate, String requestDelete, String requestSelect, String requestCountMan, String requestWomen) {
+    public AbsTable(String tableName, String requestCreate, String requestInsert, String requestUpdate, String requestDelete, String requestSelect, String requestCountMan, String requestWomen, String requestCurator) {
         this.tableName = tableName;
         this.requestCreate = requestCreate;
         this.requestInsert = requestInsert;
@@ -34,6 +35,7 @@ public abstract class AbsTable implements ITable {
         this.requestSelect = requestSelect;
         this.requestCountMan = requestCountMan;
         this.requestWomen = requestWomen;
+        this.requestCurator = requestCurator;
 
 
         IDbExecutor = new MySqlDbExecutor();
@@ -76,6 +78,15 @@ public abstract class AbsTable implements ITable {
 
     }
 
+    public void select() throws SQLException{
+        ResultSet resultSet = IDbExecutor.execute(requestSelect, true);
+        while (resultSet.next()){
+            System.out.println(resultSet.getInt(1));
+            System.out.println(resultSet.getString(2));
+            System.out.println(resultSet.getInt(3));
+        }
+    }
+
     public void selectMan() throws SQLException {
         ResultSet resultSet = IDbExecutor.execute(requestCountMan, true);
         while (resultSet.next()) {
@@ -89,6 +100,15 @@ public abstract class AbsTable implements ITable {
         ResultSet resultSet = IDbExecutor.execute(requestWomen, true);
         while (resultSet.next()){
             System.out.println(resultSet.getString(1));
+        }
+    }
+
+    public void selectGroupCurator() throws SQLException{
+        ResultSet resultSet = IDbExecutor.execute(requestCurator, true);
+        while (resultSet.next()){
+            System.out.println(resultSet.getInt(1));
+            System.out.println(resultSet.getString(2));
+            System.out.println(resultSet.getString(3));
         }
     }
 }

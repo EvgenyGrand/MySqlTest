@@ -10,6 +10,7 @@ public interface ITable {
     void selectAllStudents() throws SQLException;
     void selectMan() throws SQLException;
     void selectWomen() throws SQLException;
+    void selectGroupCurator() throws SQLException;
 
 
 

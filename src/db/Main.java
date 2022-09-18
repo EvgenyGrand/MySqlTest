@@ -31,7 +31,7 @@ public class Main {
 //            if (isTableCreated) {
 //                IDbExecutor.execute("drop table users", false);
 //           }
-              Student.selectWomen();
+              Group.selectGroupCurator();
 
 
             } finally{
