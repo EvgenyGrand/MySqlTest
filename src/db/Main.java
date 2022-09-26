@@ -13,9 +13,9 @@ public class Main {
         IDbExecutor IDbExecutor = new MySqlDbExecutor();
 
 
-        AbsTable Student = new Student();
-        AbsTable Group = new Group();
-        AbsTable Curator = new Curator();
+        AbsTable student = new Student();
+        AbsTable group = new Group();
+        AbsTable curator = new Curator();
 
 
         try {
@@ -30,11 +30,17 @@ public class Main {
 //            if (isTableCreated) {
 //                IDbExecutor.execute("drop table users", false);
 //           }
-            Student.selectStudentGroup();
+            student.selectAllStudents();
+            student.selectMan();
+            student.selectWomen();
+            group.select();
+            group.selectGroupCurator();
+            student.selectStudentGroup();
+
 
 
         } finally {
-            Student.getIDbExecutor().close();
+            student.getIDbExecutor().close();
         }
     }
 }
